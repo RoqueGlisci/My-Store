@@ -4,25 +4,105 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/style.css">
+
     <title>Store</title>
 </head>
 <body>
     
     <header>
-
+        <h1>My Store</h1>
     </header>
 
     <!-- -------------------------------------- -->
 
     <main>
-        
+
+        <section class="sec_cards">
+
+            <div class="card">
+                <img src="img/img_1.jpg" alt="img_1">
+                <h3>RTX 3050</h3>
+                
+                <h4>$50000</h4>
+                <h4>Cantidad: </h4>
+                <h3 id="can_1" class="cantidad">0</h4>
+
+                <button id="0" onclick="show(0)">Agregar</button>
+            </div>
+
+            <div class="card">
+                <img src="img/img_2.jpg" alt="img_1">
+                <h3>RTX 3060</h3>
+                
+                <h4>$100000</h4>
+                <h4>Cantidad: </h4>
+                <h3 id="can_2" class="cantidad">0</h4>
+
+                <button id="1" onclick="show(1)">Agregar</button>
+            </div>
+
+            <div class="card">
+                <img src="img/img_3.jpg" alt="img_1">
+                <h3>RTX 3070</h3>
+                
+                <h4>$150000</h4>
+                <h4>Cantidad: </h4>
+                <h3 id="can_3" class="cantidad">0</h4>
+
+                <button id="2" onclick="show(2)">Agregar</button>
+            </div>
+
+            <div class="card">
+                <img src="img/img_4.jpg" alt="img_1">
+                <h3>RTX 3080</h3>
+                
+                <h4>$200000</h4>
+                <h4>Cantidad: </h4>
+                <h3 id="can_4" class="cantidad">0</h4>
+
+                <button id="3" onclick="show(3)">Agregar</button>
+            </div>
+
+            <div class="card">
+                <img src="img/img_5.jpg" alt="img_1">
+                <h3>RTX 3090</h3>
+                
+                <h4>$250000</h4>
+                <h4>Cantidad: </h4>
+                <h3 id="can_5" class="cantidad">0</h4>
+
+                <button id="4" onclick="show(4)">Agregar</button>
+            </div>
+
+        </section>
+
+        <section class="sec_data">
+
+            <div class="totalCompr">
+                <h3>Total Compra</h3>
+                <h3 id="total" class="TC">0</h3>
+            </div>
+
+            <div>
+                <button id="compra">Comprar</button>
+                <button id="nuevaCompra">Nueva Compra</button>
+            </div>
+
+            <textarea id="ticket" name="t" id="" cols="40" rows="15"></textarea>
+
+        </section>
+
     </main>
 
     <!-- -------------------------------------- -->
 
     <footer>
-
+        <h4>By Roque Glisci</h4>
     </footer>
+
+    <!-- --------------------------------------- -->
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

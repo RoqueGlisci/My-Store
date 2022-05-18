@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "nombre": "rtx 3050",
+        "precio": 50000,
+        "cantidad": 0
+    },
+    {
+        "id": 2,
+        "nombre": "rtx 3060",
+        "precio": 100000,
+        "cantidad": 0
+    },
+    {
+        "id": 3,
+        "nombre": "rtx 3070",
+        "precio": 150000,
+        "cantidad": 0
+    },
+    {
+        "id": 4,
+        "nombre": "rtx 3080",
+        "precio": 200000,
+        "cantidad": 0
+    },
+    {
+        "id": 5,
+        "nombre": "rtx 3090",
+        "precio": 250000,
+        "cantidad": 0
+    }
+]
