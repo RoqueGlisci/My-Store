@@ -1,6 +1,5 @@
 
 let arrayProductos = [];
-let totalCompra = 0;
 let v = [];
 // ----------------------------------
 
@@ -11,7 +10,7 @@ let Cant_4 = document.getElementById("can_4");
 let Cant_5 = document.getElementById("can_5");
 let totalC = document.getElementById("total");
 
-// ----------------------------------
+// ----------------Funciones------------------
 
 //guarda del .json al localStorage
 function getJSON(arrayP) {
@@ -63,25 +62,35 @@ function mostrar_Cant_total(arrayC) {
     Cant_4.innerHTML = arrayC[3].cantidad
     Cant_5.innerHTML = arrayC[4].cantidad
    
+    v.length = 0;
     for (let i = 0; i < arrayC.length; i++) {
         v.push(arrayC[i].precio * arrayC[i].cantidad);
     }
     totalC.innerHTML = sumarArray(...v);
 }
 
+//--------bloqueo de botones --------------
+function lockButton(estado) {
+
+    document.getElementById("compra").disabled = estado;
+    document.getElementById("nuevaCompra").disabled = false;
+    for (let i = 0; i < arrayProductos.length; i++) {
+        document.getElementById(i).disabled = estado;
+    }
+}
+
 // ----------------------------------
-//
 const pedidoP = async () => { 
     const resp = await fetch("js/data.json");
     const data = await resp.json();
     
     localStorage.length == 0 ? getJSON(data) : getLocalS();
     mostrar_Cant_total(arrayProductos);
-
+     document.getElementById("nuevaCompra").disabled = true;
 };
 pedidoP();
 
-//agregar al carrito y guradar compra en el localStorage
+//-----agregar al carrito y guarda la compra en el localStorage-----
 function show(id) { 
 
     if (arrayProductos[id].cantidad < 6) {
@@ -95,29 +104,37 @@ function show(id) {
             title:  `Supero la cantidad maxima de ${arrayProductos[id].nombre} limite 6`,
         })
     }
-    
 }
 
 //---------------boton comprar-------------
-
 function ticketCompra() {
     let compra = arrayProductos.filter(gpu => gpu.cantidad > 0);
-    
+
     for (let i = 0; i < compra.length; i++) {
         document.getElementById("ticket").innerHTML += "->  " + compra[i].nombre + "  ->  " + compra[i].cantidad + " x " + compra[i].precio + "    ";
     }
-    document.getElementById("ticket").innerHTML += "Toral compra ->" + sumarArray(...v);
-    document.getElementById("compra").disabled = true;
+    document.getElementById("ticket").innerHTML += "Toral compra -> " + sumarArray(...v);
+    lockButton(true);
 }
 
 let btnCompra = document.getElementById("compra");
 btnCompra.onclick = () => {
     let r = arrayProductos.filter(gpu => gpu.cantidad === 0);
     
-    r.length == arrayProductos.length ? Swal.fire('El carrito esta vacio') :  ticketCompra();;
+    r.length == arrayProductos.length ? Swal.fire('El carrito esta vacio') : ticketCompra();
+    localStorage.clear();
 }
 
-//boton nueva compra
-
+//---------  boton nueva compra -----------
+let btnNueva = document.getElementById("nuevaCompra");
+btnNueva.onclick = () => {
+    lockButton(false);
+    arrayProductos.length = 0;
+    
+    pedidoP();
+    document.getElementById("ticket").innerHTML = "           --ticket--           ";
+}
 
 //boton borrar compra
+
+
