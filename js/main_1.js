@@ -1,7 +1,7 @@
 
 let arrayProductos = [];
 let totalCompra = 0;
-
+let v = [];
 // ----------------------------------
 
 let Cant_1 = document.getElementById("can_1");
@@ -56,7 +56,7 @@ function sumarArray(...numeros) {
 }
 //muestra los cambios en el html
 function mostrar_Cant_total(arrayC) {
-    let v = [];
+    
     Cant_1.innerHTML = arrayC[0].cantidad
     Cant_2.innerHTML = arrayC[1].cantidad
     Cant_3.innerHTML = arrayC[2].cantidad
@@ -77,7 +77,7 @@ const pedidoP = async () => {
     
     localStorage.length == 0 ? getJSON(data) : getLocalS();
     mostrar_Cant_total(arrayProductos);
-    
+
 };
 pedidoP();
 
@@ -98,8 +98,24 @@ function show(id) {
     
 }
 
-//boton comprar
+//---------------boton comprar-------------
 
+function ticketCompra() {
+    let compra = arrayProductos.filter(gpu => gpu.cantidad > 0);
+    
+    for (let i = 0; i < compra.length; i++) {
+        document.getElementById("ticket").innerHTML += "->  " + compra[i].nombre + "  ->  " + compra[i].cantidad + " x " + compra[i].precio + "    ";
+    }
+    document.getElementById("ticket").innerHTML += "Toral compra ->" + sumarArray(...v);
+    document.getElementById("compra").disabled = true;
+}
+
+let btnCompra = document.getElementById("compra");
+btnCompra.onclick = () => {
+    let r = arrayProductos.filter(gpu => gpu.cantidad === 0);
+    
+    r.length == arrayProductos.length ? Swal.fire('El carrito esta vacio') :  ticketCompra();;
+}
 
 //boton nueva compra
 
