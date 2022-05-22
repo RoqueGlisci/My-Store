@@ -29,7 +29,7 @@ function getLocalS() {
     for (let i = 0; i < localStorage.length; i++) {
         arrayProductos.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
     }
-
+    
     arrayProductos.sort((a, b) => {
         if (a.id > b.id) {
             return 1;
@@ -94,7 +94,7 @@ pedidoP();
 //-----agregar al carrito y guarda la compra en el localStorage-----
 function show(id) { 
 
-    if (arrayProductos[id].cantidad < 6) {
+    if (arrayProductos[id].cantidad < arrayProductos[id].stock) {
 
         arrayProductos[id].cantidad++;
         saveLocalS(arrayProductos[id]);
@@ -102,7 +102,7 @@ function show(id) {
     } else {
         Swal.fire({
             icon: 'error',
-            title:  `Supero la cantidad maxima de ${arrayProductos[id].nombre} limite 6`,
+            title:  `Supero la cantidad maxima de ${arrayProductos[id].nombre} limite ${arrayProductos[id].stock}`,
         })
     }
 }
@@ -116,6 +116,14 @@ function ticketCompra() {
     }
     document.getElementById("ticket").innerHTML += "Toral compra -> " + sumarArray(...v);
     lockButton(true);
+
+    Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Compra Exitosa',
+        showConfirmButton: false,
+        timer: 2000
+    })
 }
 
 let btnCompra = document.getElementById("compra");
@@ -144,5 +152,5 @@ btnBorrar.onclick = () => {
     localStorage.clear();
     pedidoP();
 } 
-
+//agregar mas gpu 5 
 //git push -u origin branch_js
