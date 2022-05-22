@@ -8,6 +8,11 @@ let Cant_2 = document.getElementById("can_2");
 let Cant_3 = document.getElementById("can_3");
 let Cant_4 = document.getElementById("can_4");
 let Cant_5 = document.getElementById("can_5");
+let Cant_6 = document.getElementById("can_6");
+let Cant_7 = document.getElementById("can_7");
+let Cant_8 = document.getElementById("can_8");
+let Cant_9 = document.getElementById("can_9");
+let Cant_10 = document.getElementById("can_10");
 let totalC = document.getElementById("total");
 
 // ----------------Funciones------------------
@@ -61,6 +66,11 @@ function mostrar_Cant_total(arrayC) {
     Cant_3.innerHTML = arrayC[2].cantidad
     Cant_4.innerHTML = arrayC[3].cantidad
     Cant_5.innerHTML = arrayC[4].cantidad
+    Cant_6.innerHTML = arrayC[5].cantidad
+    Cant_7.innerHTML = arrayC[6].cantidad
+    Cant_8.innerHTML = arrayC[7].cantidad
+    Cant_9.innerHTML = arrayC[8].cantidad
+    Cant_10.innerHTML = arrayC[9].cantidad
    
     v.length = 0;
     for (let i = 0; i < arrayC.length; i++) {
@@ -114,8 +124,9 @@ function ticketCompra() {
     for (let i = 0; i < compra.length; i++) {
         document.getElementById("ticket").innerHTML += "->  " + compra[i].nombre + "  ->  " + compra[i].cantidad + " x " + compra[i].precio + "    ";
     }
-    document.getElementById("ticket").innerHTML += "Toral compra -> " + sumarArray(...v);
+    document.getElementById("ticket").innerHTML += "Total compra -> $" + sumarArray(...v);
     lockButton(true);
+    localStorage.clear();
 
     Swal.fire({
         position: 'top-end',
@@ -131,7 +142,6 @@ btnCompra.onclick = () => {
     let r = arrayProductos.filter(gpu => gpu.cantidad === 0);
     
     r.length == arrayProductos.length ? Swal.fire('El carrito esta vacio') : ticketCompra();
-    localStorage.clear();
 }
 
 //---------  boton nueva compra -----------
@@ -139,7 +149,7 @@ let btnNueva = document.getElementById("nuevaCompra");
 btnNueva.onclick = () => {
     lockButton(false);
     arrayProductos.length = 0;
-    
+
     pedidoP();
     document.getElementById("ticket").innerHTML = "           --ticket--           ";
 }
@@ -152,5 +162,4 @@ btnBorrar.onclick = () => {
     localStorage.clear();
     pedidoP();
 } 
-//agregar mas gpu 5 
-//git push -u origin branch_js
+

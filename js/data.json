@@ -33,5 +33,40 @@
         "precio": 250000,
         "cantidad": 0,
         "stock": 3
+    },
+    {
+        "id": 6,
+        "nombre": "RX 6500 xt",
+        "precio": 50000,
+        "cantidad": 0,
+        "stock": 4
+    },
+    {
+        "id": 7,
+        "nombre": "RX 6600 xt",
+        "precio": 100000,
+        "cantidad": 0,
+        "stock": 5
+    },
+    {
+        "id": 8,
+        "nombre": "RX 6700 xt",
+        "precio": 150000,
+        "cantidad": 0,
+        "stock": 2
+    },
+    {
+        "id": 9,
+        "nombre": "RX 6800 xt",
+        "precio": 200000,
+        "cantidad": 0,
+        "stock": 6
+    },
+    {
+        "id": 10,
+        "nombre": "RX 6900 xt",
+        "precio": 250000,
+        "cantidad": 0,
+        "stock": 2
     }
 ]
