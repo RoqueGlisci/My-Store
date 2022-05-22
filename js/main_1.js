@@ -73,6 +73,7 @@ function mostrar_Cant_total(arrayC) {
 function lockButton(estado) {
 
     document.getElementById("compra").disabled = estado;
+    document.getElementById("borrarCompra").disabled = estado;
     document.getElementById("nuevaCompra").disabled = false;
     for (let i = 0; i < arrayProductos.length; i++) {
         document.getElementById(i).disabled = estado;
@@ -86,7 +87,7 @@ const pedidoP = async () => {
     
     localStorage.length == 0 ? getJSON(data) : getLocalS();
     mostrar_Cant_total(arrayProductos);
-     document.getElementById("nuevaCompra").disabled = true;
+    document.getElementById("nuevaCompra").disabled = true;
 };
 pedidoP();
 
@@ -135,6 +136,13 @@ btnNueva.onclick = () => {
     document.getElementById("ticket").innerHTML = "           --ticket--           ";
 }
 
-//boton borrar compra
+//----------boton borrar compra----------
 
+let btnBorrar = document.getElementById("borrarCompra");
+btnBorrar.onclick = () => {
+    arrayProductos.length = 0;
+    localStorage.clear();
+    pedidoP();
+} 
 
+//git push -u origin branch_js
